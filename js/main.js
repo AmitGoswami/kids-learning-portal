@@ -67,6 +67,12 @@ function showNumbersMenu() {
         <div class="card" onclick="startActivity('matchNum')">Match Numbers 🎲</div>
         <div class="card" onclick="startActivity('missingNum')">Fill Missing Numbers 🔢</div>
         <div class="card" onclick="startActivity('evenOdd')">Even or Odd ❓</div>
+        <div class="card" onclick="startActivity('compare')">Greater or Less Than ⬆️⬇️</div>
+        <div class="card" onclick="startActivity('numberBonds')">Number Bonds ❤️</div>
+        <div class="card" onclick="startActivity('skipCount')">Counting by 2,5,10 🔢</div>
+        <div class="card" onclick="startActivity('placeValue')">Tens & Ones 🧱</div>
+        <div class="card" onclick="startActivity('coins')">Coins / Money 💰</div>
+        <div class="card" onclick="startActivity('measure')">Compare Sizes 📏</div>
 
       </div>
       <button onclick="navigate('home')" class="btn-back mt-4">⬅ Back to Home</button>

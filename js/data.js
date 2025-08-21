@@ -12,7 +12,7 @@ function generateProblems(type, count) {
 
   for (let i = 0; i < count; i++) {
     if (type === "count") {
-      const num = Math.floor(Math.random() * 20) + 1;
+      const num = Math.floor(Math.random() * 10) + 1;
       const obj = pickObj();
       problems.push({
         question: `How many?<br/>${obj.repeat(num)}`,
@@ -22,8 +22,8 @@ function generateProblems(type, count) {
       });
     }
     else if (type === "add") {
-      const a = Math.floor(Math.random()*10)+1;
-      const b = Math.floor(Math.random()*10)+1;
+      const a = Math.floor(Math.random()*7)+1;
+      const b = Math.floor(Math.random()*7)+1;
       const obj = pickObj();
       problems.push({
         question: `${obj.repeat(a)} + ${obj.repeat(b)} = ?`,
@@ -33,7 +33,7 @@ function generateProblems(type, count) {
       });
     }
     else if (type === "subtract") {
-      const a = Math.floor(Math.random()*10)+3;
+      const a = Math.floor(Math.random()*7)+3;
       const b = Math.floor(Math.random()*(a-1))+1;
       const obj = pickObj();
       problems.push({
@@ -47,7 +47,7 @@ function generateProblems(type, count) {
       const n = Math.floor(Math.random()*20)+1;
       problems.push({
         question: `${n}, __, ${n+2}`,
-        question: `What comes in between ${n} and ${n+2}`,
+        questionTxt: `What comes in between ${n} and ${n+2}`,
         answer: (n+1).toString(),
         options: shuffle([n+1, n+2, n+3].map(n=>n.toString()))
       });
@@ -109,5 +109,79 @@ function generateProblems(type, count) {
       });
     }
   }
+  // 1. Compare Greater or Less
+  else if(type === "compare"){
+    const a = Math.floor(Math.random()*10)+1;
+    const b = Math.floor(Math.random()*10)+1;
+    problems.push({
+      question: `Which is greater? ${a} or ${b}?`,
+      questionTxt: `Which is greater? ${a} or ${b}?`,
+      answer: a > b ? a : b,
+      options: shuffle([a,b])
+    });
+  }
+
+  // 2. Number Bonds
+  else if(type === "numberBonds"){
+    const total = Math.floor(Math.random()*10)+2;
+    const part1 = Math.floor(Math.random()*total);
+    const part2 = total - part1;
+    problems.push({
+      question: `Fill the missing number: ${part1} + __ = ${total}`,
+      questionTxt: `Fill the missing number: ${part1} + __ = ${total}`,
+      answer: part2,
+      options: shuffle([part2, part2+1, Math.max(0,part2-1)])
+    });
+  }
+
+  // 3. Skip Counting
+  else if(type === "skipCount"){
+    const start = [0,2,5,10][Math.floor(Math.random()*4)];
+    const step = [2,5,10][Math.floor(Math.random()*3)];
+    const next = start + step;
+    problems.push({
+      question: `What comes next? ${start}, ... ? (step ${step})`,
+      questionTxt: `What comes next? ${start}, ... ? (step ${step})`,
+      answer: next,
+      options: shuffle([next, next+step, Math.max(0,next-step)])
+    });
+  }
+
+  // 4. Place Value (Tens & Ones)
+  else if(type === "placeValue"){
+    const num = Math.floor(Math.random()*90)+10; // 10-99
+    const tens = Math.floor(num/10);
+    const ones = num % 10;
+    problems.push({
+      question: `Number ${num}: How many tens?`,
+      questionTxt: `Number ${num}: How many tens?`,
+      answer: tens,
+      options: shuffle([tens, tens+1, Math.max(0,tens-1)])
+    });
+  }
+
+  // 5. Coins / Money
+  else if(type === "coins"){
+    const coins = [1,5,10];
+    const c1 = coins[Math.floor(Math.random()*coins.length)];
+    const c2 = coins[Math.floor(Math.random()*coins.length)];
+    problems.push({
+      question: `If you have a ${c1} coin and a ${c2} coin, total money = ?`,
+      answer: c1+c2,
+      options: shuffle([c1+c2, Math.abs(c1-c2), c1*c2])
+    });
+  }
+
+  // 6. Compare Sizes / Measurement
+  else if(type === "measure"){
+    const a = Math.floor(Math.random()*10)+1;
+    const b = Math.floor(Math.random()*10)+1;
+    problems.push({
+      question: `Which is taller? ${a} blocks or ${b} blocks?`,
+      answer: a > b ? a : b,
+      options: shuffle([a,b])
+    });
+  }
+
   return problems;
 }
