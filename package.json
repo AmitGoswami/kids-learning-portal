@@ -1,0 +1,15 @@
+{
+  "name": "kids-learning-app",
+  "version": "1.0.0",
+  "description": "Kids Learning SPA (Ages 3–6)",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --entry-file=index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

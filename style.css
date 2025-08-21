@@ -1,0 +1,63 @@
+.card {
+  background-color: #a78bfa; /* Tailwind purple-300 */
+  color: white;
+  font-size: 1.25rem; /* text-xl */
+  padding: 1.5rem;    /* p-6 */
+  border-radius: 0.75rem; /* rounded-xl */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* shadow-lg */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.card:hover {
+  background-color: #8b5cf6; /* purple-400 */
+}
+
+.btn-card {
+  background-color: #93c5fd; /* blue-300 */
+  color: white;
+  font-size: 1.25rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+.btn-card:hover {
+  background-color: #60a5fa; /* blue-400 */
+}
+
+.btn-back {
+  background-color: #d1d5db; /* gray-300 */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+.option-btn {
+  padding: 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.75rem;
+  background-color: #93c5fd; /* blue-300 */
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  transition: transform .15s ease, box-shadow .15s ease;
+  cursor: pointer;
+}
+
+.option-btn:hover { transform: translateY(-3px); }
+
+.option-btn.correct {
+  box-shadow: 0 8px 18px rgba(34,197,94,0.2);
+  transform: scale(1.03);
+  background-color: #10b981; /* green-ish */
+}
+
+@keyframes shakeAnim {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+.shake {
+  animation: shakeAnim .45s ease;
+}

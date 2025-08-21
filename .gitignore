@@ -1,0 +1,16 @@
+node_modules/
+.idea/
+.vscode/
+.DS_Store
+dist/
+.env
+*.log
+*.tmp
+coverage/
+*.bak
+*.swp
+*.swo
+*.class
+*.exe
+*.dll
+*.so
