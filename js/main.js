@@ -73,7 +73,6 @@ function showNumbersMenu() {
         <div class="card" onclick="startActivity('placeValue')">Tens & Ones 🧱</div>
         <div class="card" onclick="startActivity('coins')">Coins / Money 💰</div>
         <div class="card" onclick="startActivity('measure')">Compare Sizes 📏</div>
-
       </div>
       <button onclick="navigate('home')" class="btn-back mt-4">⬅ Back to Home</button>
     </div>
@@ -108,7 +107,7 @@ function startActivity(type) {
   currentProblems = generateProblems(type, 10);
 
   lastMenu = type;
-  if (["count","add","subtract","matchNum","missingNum", "evenOdd"].includes(type)) parentMenu = "numbers";
+  if (["count","add","subtract","matchNum","missingNum", "evenOdd", "compare", "numberBonds", "skipCount", "placeValue", "coins", "measure"].includes(type)) parentMenu = "numbers";
   else parentMenu = "letters";
 
   renderProblem(type);
@@ -227,5 +226,29 @@ function shootConfetti() {
     }
   },60);
 }
+
+function saveProgress() {
+  localStorage.setItem("kidsScore", score);
+  localStorage.setItem("kidsGiftPoints", giftPoints);
+  localStorage.setItem("kidsGifts", JSON.stringify(gifts));
+}
+
+function loadProgress() {
+  score = parseInt(localStorage.getItem("kidsScore")) || 0;
+  giftPoints = parseInt(localStorage.getItem("kidsGiftPoints")) || 0;
+  gifts = JSON.parse(localStorage.getItem("kidsGifts")) || [];
+
+  // Update UI if necessary
+  const scoreEl = document.getElementById("score");
+  if(scoreEl) scoreEl.innerText = score;
+
+  const progressEl = document.getElementById("progress");
+  if(progressEl) progressEl.value = score;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadProgress();
+});
+
 
 

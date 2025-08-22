@@ -15,6 +15,7 @@ function checkAnswer(el, answer, type){
   score += 5;
   giftPoints += 5;
   shootConfetti();
+  saveProgress();
   document.getElementById("score").innerText = score;
   const progress = document.getElementById("progress");
   if(progress) progress.value = score;
@@ -29,6 +30,7 @@ function checkAnswer(el, answer, type){
     giftPoints -= giftThreshold;
     const newGift = availableGifts[gifts.length % availableGifts.length];
     gifts.push(newGift);
+    saveProgress(); // ← persist gifts
     showReward(newGift);
     return; // stop advancing problem, go to reward screen
   }
